@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistem Pendata NIK - Petugas</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-content">
+          <div class="logo-section">
+            <h1 class="title">📋 Sistem Pendata Penduduk</h1>
+            <p class="subtitle">Inputan Data NIK, Nama, Alamat & Nominal</p>
+          </div>
+          <div class="total-data">
+            <span>Total Data: <strong id="totalCount">0</strong></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Input Section -->
+        <section class="input-section">
+          <div class="form-container">
+            <h2>Tambahkan Data Baru</h2>
+            <form id="dataForm" class="form">
+              <div class="form-group">
+                <label for="nama">👤 Nama Lengkap</label>
+                <input
+                  type="text"
+                  id="nama"
+                  placeholder="Masukkan nama lengkap"
+                  required
+                  class="form-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="nik">🆔 Nomor NIK</label>
+                <input
+                  type="text"
+                  id="nik"
+                  placeholder="Masukkan 16 digit NIK"
+                  maxlength="16"
+                  pattern="[0-9]{16}"
+                  required
+                  class="form-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="alamat">🏠 Alamat</label>
+                <input
+                  type="text"
+                  id="alamat"
+                  placeholder="Masukkan alamat lengkap"
+                  required
+                  class="form-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="nominal">💰 Nominal (Rp)</label>
+                <input
+                  type="number"
+                  id="nominal"
+                  placeholder="Masukkan nominal"
+                  min="0"
+                  required
+                  class="form-input"
+                />
+              </div>
+              <button type="submit" class="btn btn-submit">
+                ✓ Submit Data
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <!-- Data Table Section -->
+        <section class="table-section">
+          <div class="table-header">
+            <h2>Data Penduduk Terdaftar</h2>
+            <div class="search-box">
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="🔍 Cari nama atau NIK..."
+                class="search-input"
+              />
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table id="dataTable" class="data-table">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Nama</th>
+                  <th>NIK</th>
+                  <th>Alamat</th>
+                  <th>Nominal (Rp)</th>
+                  <th>Tanggal Input</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody">
+                <!-- Data akan ditampilkan di sini -->
+              </tbody>
+            </table>
+            <div id="emptyMessage" class="empty-message">
+              📭 Belum ada data. Mulai dengan menambahkan data baru.
+            </div>
+          </div>
+        </section>
+
+        <!-- Export Section -->
+        <section class="export-section">
+          <h2>Unduh Data</h2>
+          <div class="export-buttons">
+            <button class="btn btn-export btn-excel" id="exportExcel">
+              📊 Unduh Excel
+            </button>
+            <button class="btn btn-export btn-pdf" id="exportPDF">
+              📄 Unduh PDF
+            </button>
+            <button class="btn btn-export btn-word" id="exportWord">
+              📝 Unduh Word
+            </button>
+            <button class="btn btn-export btn-danger" id="deleteAll">
+              🗑️ Hapus Semua
+            </button>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>
+          ©️ 2025 Sistem Pendata Penduduk | Dibuat untuk kemudahan petugas data
+        </p>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
